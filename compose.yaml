@@ -11,6 +11,36 @@ services:
       - "3306:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
+    networks:
+      - mobile_network_analytics-network
+  celery_worker:
+    image: mobile_network_analytics:latest
+    command: celery --app=mobile_network_analytics.celery.celery.app worker --loglevel=info
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+      - redis
+    networks:
+      - mobile_network_analytics-network
+  celery_beat:
+    image: mobile_network_analytics:latest
+    command: celery -A mobile_network_analytics.celery.celery.app beat --loglevel=info
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+      - redis
+    networks:
+      - mobile_network_analytics-network
+  redis:
+    image: "redis:latest"
+    networks:
+      - mobile_network_analytics-network
 
 volumes:
   mariadb_data:
+
+networks:
+  mobile_network_analytics-network:
+    driver: bridge
