@@ -5,7 +5,7 @@ from mobile_network_analytics.db import Base
 from mobile_network_analytics.schemas.utils import Interval
 
 
-class CellData(Base):
+class DBCellData(Base):
     __tablename__ = "cell_data"
 
     id: Mapped[int] = mapped_column(primary_key=True, init=False, autoincrement=True)

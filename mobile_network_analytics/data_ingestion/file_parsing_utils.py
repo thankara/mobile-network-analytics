@@ -2,7 +2,7 @@ import csv
 from collections import defaultdict
 from pydantic import ValidationError
 
-from mobile_network_analytics.models import ServiceData, CellData
+from mobile_network_analytics.models import DBServiceData, DBCellData
 from mobile_network_analytics.schemas.traffic_record import TrafficRecord
 from mobile_network_analytics.schemas.utils import Interval
 
@@ -35,7 +35,7 @@ def parse_files(files: list[str]) -> list[TrafficRecord]:
     return records
 
 
-def calculate_services_kpis(records: list[TrafficRecord], start_ts: int, end_ts: int, interval: Interval) -> list[ServiceData]:
+def calculate_services_kpis(records: list[TrafficRecord], start_ts: int, end_ts: int, interval: Interval) -> list[DBServiceData]:
     """
     Aggregates total bytes per service_id and returns ServiceData records.
     """
@@ -55,9 +55,9 @@ def calculate_services_kpis(records: list[TrafficRecord], start_ts: int, end_ts:
     )[:3]
 
     # Convert to ServiceData ORM objects
-    service_data_records: list[ServiceData] = []
+    service_data_records: list[DBServiceData] = []
     for service_id, total_bytes in top_services:
-        entry = ServiceData(
+        entry = DBServiceData(
             interval_start_timestamp=start_ts,
             interval_end_timestamp=end_ts,
             service_id=service_id,
@@ -69,7 +69,7 @@ def calculate_services_kpis(records: list[TrafficRecord], start_ts: int, end_ts:
     return service_data_records
 
 
-def calculate_cells_kpis(records: list[TrafficRecord], start_ts: int, end_ts: int, interval: Interval) -> list[ServiceData]:
+def calculate_cells_kpis(records: list[TrafficRecord], start_ts: int, end_ts: int, interval: Interval) -> list[DBCellData]:
     """
     Aggregates number of unique users per cell_id and returns CellData records.
     """
@@ -93,9 +93,9 @@ def calculate_cells_kpis(records: list[TrafficRecord], start_ts: int, end_ts: in
     )[:3]
 
     # Convert to CellData ORM objects
-    cell_data_records: list[CellData] = []
+    cell_data_records: list[DBCellData] = []
     for cell_id, unique_user_count in top_cells:
-        entry = CellData(
+        entry = DBCellData(
             interval_start_timestamp=start_ts,
             interval_end_timestamp=end_ts,
             cell_id=cell_id,

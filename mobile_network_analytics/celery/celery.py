@@ -19,26 +19,24 @@ app = Celery(
 )
 
 app.conf.beat_schedule = {
-    # "services_kpi_5min": {
-    #     "task": "mobile_network_analytics.celery.tasks.calculate_service_kpis_task",
-    #     "schedule": crontab(minute="1-59/5"),  # runs at minute 1, 6, 11, ... past every hour
-    #     "schedule": timedelta(seconds=30),
-    #     "args" : (directory_path, Interval.FIVE_MINUTE, end_time),
-    # },
-    # "services_kpi_1hour": {
-    #     "task": "mobile_network_analytics.celery.tasks.calculate_service_kpis_task",
-    #     "schedule": crontab(minute=1),  # runs at 1 minute past every hour
-    #     "args" : (directory_path, Interval.ONE_HOUR, end_time),
-    # },
-    "cells_kpi_5min": {
-        "task": "mobile_network_analytics.celery.tasks.calculate_cell_kpis_task",
-        # "schedule": crontab(minute="1-59/5"),  # runs at minute 1, 6, 11, ... past every hour
-        "schedule": timedelta(seconds=30),
+    "services_kpi_5min": {
+        "task": "mobile_network_analytics.celery.tasks.calculate_service_kpis_task",
+        "schedule": crontab(minute="1-59/5"),  # runs at minute 1, 6, 11, ... past every hour
         "args" : (directory_path, Interval.FIVE_MINUTE, end_time),
     },
-    # "cells_kpi_1hour": {
-    #     "task": "mobile_network_analytics.celery.tasks.calculate_cell_kpis_task",
-    #     "schedule": crontab(minute=1),  # runs at 1 minute past every hour
-    #     "args" : (directory_path, Interval.ONE_HOUR, end_time),
-    # },
+    "services_kpi_1hour": {
+        "task": "mobile_network_analytics.celery.tasks.calculate_service_kpis_task",
+        "schedule": crontab(minute=1),  # runs at 1 minute past every hour
+        "args" : (directory_path, Interval.ONE_HOUR, end_time),
+    },
+    "cells_kpi_5min": {
+        "task": "mobile_network_analytics.celery.tasks.calculate_cell_kpis_task",
+        "schedule": crontab(minute="1-59/5"),  # runs at minute 1, 6, 11, ... past every hour
+        "args" : (directory_path, Interval.FIVE_MINUTE, end_time),
+    },
+    "cells_kpi_1hour": {
+        "task": "mobile_network_analytics.celery.tasks.calculate_cell_kpis_task",
+        "schedule": crontab(minute=1),  # runs at 1 minute past every hour
+        "args" : (directory_path, Interval.ONE_HOUR, end_time),
+    },
 }
