@@ -1,4 +1,4 @@
-from typing_extensions import Annotated
+from typing import Annotated
 from fastapi import APIRouter, Depends
 
 from mobile_network_analytics.api.services.kpi_services import CellsKPIService, ServicesKPIService, get_cells_kpi_service, get_services_kpi_service

@@ -1,5 +1,4 @@
-import pytest
-from mobile_network_analytics.data_ingestion.file_extraction_utils import get_interval_files, extract_timestamp_from_filename
+from mobile_network_analytics.data_ingestion.file_extraction_utils import get_interval_files
 
 
 def test_get_interval_files(tmp_path):

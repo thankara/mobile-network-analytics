@@ -1,4 +1,3 @@
-import os
 from typing import Generator, Any
 import pytest
 from fastapi.testclient import TestClient

@@ -1,9 +1,9 @@
-from annotated_types import Interval
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from mobile_network_analytics.models.cell_data import DBCellData
 from mobile_network_analytics.models.service_data import DBServiceData
+from mobile_network_analytics.schemas.utils import Interval
 
 
 class KPIRepository:
