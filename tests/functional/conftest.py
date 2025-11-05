@@ -5,14 +5,13 @@ from fastapi.testclient import TestClient
 from sqlalchemy import Engine, create_engine
 from sqlalchemy.orm import sessionmaker
 
-# --- In-memory SQLite for testing ---
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False)
 
 
 @pytest.fixture(scope="function")
 def override_settings(monkeypatch):
     """
-    Override settings for testing
+    Overrides db settings for testing
     :param monkeypatch:
     :return:
     """
@@ -26,7 +25,7 @@ def override_settings(monkeypatch):
 @pytest.fixture(scope="function")
 def engine(override_settings) -> Generator[Engine, Any, None]:
     """
-    Creates a Postgres container for testing.
+    Creates an in-memory sqlite db for testing.
     """
     import mobile_network_analytics.models as models
     from mobile_network_analytics.db.base import Base
