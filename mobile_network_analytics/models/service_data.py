@@ -1,7 +1,7 @@
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
 
-from mobile_network_analytics.db import Base
+from mobile_network_analytics.db.base import Base
 from mobile_network_analytics.schemas.utils import Interval
 
 

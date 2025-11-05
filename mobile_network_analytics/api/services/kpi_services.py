@@ -2,7 +2,7 @@ from typing import Annotated
 from fastapi import Depends
 from sqlalchemy.orm import Session
 from mobile_network_analytics.api.repositories.kpi_repositories import CellsKPIRepository, ServicesKPIRepository
-from mobile_network_analytics.db import get_db_session
+from mobile_network_analytics.db.db import get_db_session
 from mobile_network_analytics.schemas.utils import Interval
 
 

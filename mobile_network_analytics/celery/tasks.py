@@ -6,7 +6,7 @@ from mobile_network_analytics.data_ingestion.file_parsing_utils import (
     calculate_services_kpis,
     parse_files,
 )
-from mobile_network_analytics.db import get_db_session_context
+from mobile_network_analytics.db.db import get_db_session_context
 from mobile_network_analytics.schemas.utils import Interval
 
 

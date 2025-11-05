@@ -1,5 +1,5 @@
 import os
-from datetime import datetime, timedelta
+from datetime import datetime
 from celery import Celery
 from celery.schedules import crontab
 

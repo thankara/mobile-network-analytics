@@ -1,18 +1,13 @@
 from contextlib import contextmanager
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, MappedAsDataclass, DeclarativeBase
+from sqlalchemy.orm import sessionmaker
 
-from mobile_network_analytics.settings import get_db_settings
+from mobile_network_analytics.db.settings import get_db_settings
 
 
 settings = get_db_settings()
-
 engine = create_engine(settings.connection_string)
 SessionLocal = sessionmaker(autoflush=False, autocommit=False, bind=engine)
-
-
-class Base(MappedAsDataclass, DeclarativeBase):
-    pass
 
 
 def get_db_session():

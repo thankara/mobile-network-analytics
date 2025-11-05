@@ -40,7 +40,7 @@ def get_time_window(interval: Interval, end_time: datetime) -> tuple[int, int]:
 
 def get_interval_files(directory_path: str, start_ts: int, end_ts: int) -> list[str]:
     """
-    Return all raw files with interval_end_timestamp between start_ts and end_ts (exclusive).
+    Return all files with interval_end_timestamp between start_ts and end_ts.
     """
     matching_files = []
     for file in os.listdir(directory_path):

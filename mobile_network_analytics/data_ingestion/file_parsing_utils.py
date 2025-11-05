@@ -9,7 +9,7 @@ from mobile_network_analytics.schemas.utils import Interval
 
 def parse_files(files: list[str]) -> list[TrafficRecord]:
     """
-    Parses a CSV file and returns a list of validated TrafficRecord objects.
+    Parses a list of CSV files and returns a list of validated TrafficRecord objects.
     """
     records: list[TrafficRecord] = []
 
@@ -37,7 +37,7 @@ def parse_files(files: list[str]) -> list[TrafficRecord]:
 
 def calculate_services_kpis(records: list[TrafficRecord], start_ts: int, end_ts: int, interval: Interval) -> list[DBServiceData]:
     """
-    Aggregates total bytes per service_id and returns ServiceData records.
+    Aggregates total bytes per service_id and returns DBServiceData records.
     """
     if not records:
         return []
@@ -71,7 +71,7 @@ def calculate_services_kpis(records: list[TrafficRecord], start_ts: int, end_ts:
 
 def calculate_cells_kpis(records: list[TrafficRecord], start_ts: int, end_ts: int, interval: Interval) -> list[DBCellData]:
     """
-    Aggregates number of unique users per cell_id and returns CellData records.
+    Aggregates number of unique users per cell_id and returns DBCellData records.
     """
     if not records:
         return []

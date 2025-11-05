@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
-from mobile_network_analytics.db import Base
-from mobile_network_analytics.settings import get_db_settings
+from mobile_network_analytics.db.base import Base
+from mobile_network_analytics.db.settings import get_db_settings
 import mobile_network_analytics.models  # noqa
 
 

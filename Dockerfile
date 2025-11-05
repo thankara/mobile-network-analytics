@@ -20,7 +20,7 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 # Disable Poetry venv creation and install dependencies globally
 COPY pyproject.toml poetry.lock* README.md /app/
 RUN poetry config virtualenvs.create false \
-    && poetry install --no-root
+    && poetry install --no-root --without dev
 
 # Copy the application code
 COPY . .
