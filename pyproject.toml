@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "mobile_network_analytics"
 version = "0.1.0"
-description = ""
+description = "Application for calculating mobile subscriber and network statistics from raw data"
 authors = ["Thanos Karafyllis <thankara1996@gmail.com>"]
 readme = "README.md"
 

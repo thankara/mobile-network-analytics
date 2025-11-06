@@ -1,4 +1,5 @@
 from datetime import datetime
+
 from mobile_network_analytics.celery.celery import app
 from mobile_network_analytics.data_ingestion.file_extraction_utils import get_interval_files, get_time_window
 from mobile_network_analytics.data_ingestion.file_parsing_utils import (

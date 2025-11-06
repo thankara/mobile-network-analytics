@@ -15,11 +15,11 @@ class KPIRepository:
 class ServicesKPIRepository(KPIRepository):
 
     def get_service_kpi_data(
-            self,
-            interval: Interval,
-            interval_start_timestamp: str | None = None,
-            interval_end_timestamp: str | None = None,
-            service_id: int | None = None
+        self,
+        interval: Interval,
+        interval_start_timestamp: str | None = None,
+        interval_end_timestamp: str | None = None,
+        service_id: int | None = None
     ) -> list[DBServiceData]:
         query = select(DBServiceData).where(DBServiceData.interval == interval.value)
 
@@ -44,11 +44,11 @@ class ServicesKPIRepository(KPIRepository):
 class CellsKPIRepository(KPIRepository):
 
     def get_cell_kpi_data(
-            self,
-            interval: Interval,
-            interval_start_timestamp: str | None = None,
-            interval_end_timestamp: str | None = None,
-            cell_id: int | None = None
+        self,
+        interval: Interval,
+        interval_start_timestamp: str | None = None,
+        interval_end_timestamp: str | None = None,
+        cell_id: int | None = None
     ) -> list[DBCellData]:
         query = select(DBCellData).where(DBCellData.interval == interval.value)
 

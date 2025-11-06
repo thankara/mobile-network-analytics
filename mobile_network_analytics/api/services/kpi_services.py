@@ -1,6 +1,7 @@
 from typing import Annotated
 from fastapi import Depends
 from sqlalchemy.orm import Session
+
 from mobile_network_analytics.api.repositories.kpi_repositories import CellsKPIRepository, ServicesKPIRepository
 from mobile_network_analytics.db.db import get_db_session
 from mobile_network_analytics.schemas.utils import Interval
@@ -46,6 +47,7 @@ class CellsKPIService:
         )
 
 
+# Dependency injection functions, can be put in a separate module
 def get_services_kpi_service(session: Annotated[Session, Depends(get_db_session)]) -> ServicesKPIService:
     service_kpi_repository = ServicesKPIRepository(session=session)
     return ServicesKPIService(service_kpi_repository=service_kpi_repository)

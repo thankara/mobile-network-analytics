@@ -1,4 +1,4 @@
-from mobile_network_analytics import models
+import mobile_network_analytics.models as models
 from mobile_network_analytics.schemas.utils import Interval
 
 
