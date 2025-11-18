@@ -7,6 +7,7 @@ Application for calculating mobile subscriber and network statistics from raw da
 ### Requirements
 
 a. Docker
+b. Poetry
 
 ### Steps
 
@@ -28,12 +29,14 @@ a. Docker
 
 2. Run `docker compose up -d mariadb` to start the database container
 
-3. Export the .env variables on a terminal window and run the script in the scripts folder to create the db tables.
+3. Install the project locally (this is only needed to run the `init_db.py` script on the next step). Open a terminal and run `poetry install`.
+
+4. Open a poetry terminal (run `poetry shell`) and export the .env variables. After that run the script in the scripts folder to create the db tables.
    `python scripts/init_db.py`
 
-4. Update the .env and comment the `DB_HOST=localhost` and uncomment the `DB_HOST=mariadb` line. This is because, unlike the terminal, Docker cannot access localhost and needs the container name.
+5. Update the .env and comment the `DB_HOST=localhost` and uncomment the `DB_HOST=mariadb` line. This is because, unlike the terminal, Docker containers cannot access localhost and need the container name to communicate with the database.
 
-5. Run `docker build -t mobile_network_analytics:latest .` and then `docker compose up -d` to start all the containers.
+6. Run `docker build -t mobile_network_analytics:latest .` and then `docker compose up -d` to start all the containers.
 
 After the above steps the celery job will start to run. You will need to place the sample files (before building the image) in the directory spcecified in the .env file in order to be found. If a directory outside the project's directory is specified, it will probably need to be mounted to Docker (let's leave that for now).
 
@@ -43,4 +46,4 @@ If the above .env variable is not set, the job will run looking for files based 
 
 The job is scheduled to run every five minutes and every hour (1 minute after the file generation is completed)
 
-6. After a single run of the job, you can use the API at `localhost:5000` to get the KPI results from the two endpoints.
+7. After a single run of the job, you can use the API at `localhost:5000` to get the KPI results from the two endpoints.
